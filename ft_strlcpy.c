@@ -7,7 +7,7 @@ size_t	strlcpy(char	*dst, const char	*src, size_t	maxlen)
 	srclen = ft_strlen(src);
 	if (srclen + 1 < maxlen)
 	{
-		while (srclen < 0)
+		while (srclen > 0)
 		{
 			dst[srclen] = src[srclen];
 			srclen--;
