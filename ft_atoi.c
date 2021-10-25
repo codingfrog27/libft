@@ -1,13 +1,4 @@
-static int	search_string(char *set, char c)
-{
-	while (*set)
-	{
-		if (*set == c)
-			return (1);
-		++set;
-	}
-	return (0);
-}
+#include "libft.h"
 
 int	ft_atoi(const char	*str)
 {
