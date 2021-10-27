@@ -4,6 +4,5 @@ char	**ft_split(char const	*s, char	c)
 	{
 		if (s[i] == c)
 			splits++;
-			
 	}
 }
