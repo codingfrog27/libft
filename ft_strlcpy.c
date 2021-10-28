@@ -1,8 +1,8 @@
-#include <stddef.h>
+#include "libft.h"
 
 size_t	strlcpy(char	*dst, const char	*src, size_t	maxlen)
 {
-	int	srclen;
+	size_t	srclen;
 
 	srclen = ft_strlen(src);
 	if (srclen + 1 < maxlen)
