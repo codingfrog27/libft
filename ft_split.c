@@ -50,12 +50,13 @@ char	**ft_split(char const	*s, char	c)
 	out = (char **)malloc(wordcount(s, c) * sizeof(char *) + 1);
 	if (!out)
 		return (NULL);
-	if (ft_allocate(out /* More variables...*/))
+	if (ft_allocate(out))
 	{	
-		/* Free ur shity array */
 	}
 	return (out);
 }
+/* More variables... on line 53*/
+		/* Free ur array line 54*/
 
 void	something(char *s,	char c)
 {
@@ -68,7 +69,7 @@ void	something(char *s,	char c)
 	newstring = malloc(sizeof(char) * coollen(s, c));
 	while (j <= wordsize)
 	{
-		newstring[j] == oldstring[j]
+		newstring[j] == s[j];
 		j++;
 	}
 }
