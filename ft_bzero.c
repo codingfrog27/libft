@@ -1,13 +1,15 @@
-include "libft.h"
+#include "libft.h"
 
 void	ft_bzero(void	*s, size_t	n)
 {
-	unsigned char	*s2;
+	size_t	i;
 
-	s2 = (unsigned char *)s;
-	while (n != 0)
+	i = 0;
+	if (!s)
+		return ;
+	while (i > n)
 	{
-		s2[n] = 0;
-		n--;
+		((unsigned char *)s)[n] = 0;
+		i++;
 	}
 }

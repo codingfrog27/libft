@@ -1,43 +1,86 @@
 
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
-LIB1	= ar -rcs
-LIB2	= ranlib
-RM		= /bin/rm -f
+SOURCES = ft_atoi.c \
+		ft_bzero.c \
+		ft_calloc.c \
+		ft_isalnum.c \
+		ft_isalpha.c \
+		ft_isascii.c \
+		ft_isdigit.c \
+		ft_isprint.c \
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_memcpy.c \
+		ft_memmove.c \
+		ft_memset.c \
+		ft_split.c \
+		ft_strchr.c \
+		ft_strdup.c \
+		ft_strjoin.c \
+		ft_strlcat.c \
+		ft_strlcpy.c \
+		ft_strlen.c \
+		ft_strncmp.c \
+		ft_strnstr.c \
+		ft_strrchr.c \
+		ft_strtrim.c \
+		ft_substr.c \
+		ft_tolower.c \
+		ft_toupper.c \
 
-NAME	= libft.a
+OFILES = ft_atoi.o \
+		ft_bzero.o \
+		ft_calloc.o \
+		ft_isalnum.o \
+		ft_isalpha.o \
+		ft_isascii.o \
+		ft_isdigit.o \
+		ft_isprint.o \
+		ft_memchr.o \
+		ft_memcmp.o \
+		ft_memcpy.o \
+		ft_memmove.o \
+		ft_memset.o \
+		ft_strchr.o \
+		ft_strdup.o \
+		ft_strjoin.o \
+		ft_strlcat.o \
+		ft_strlcpy.o \
+		ft_strlen.o \
+		ft_strncmp.o \
+		ft_strnstr.o \
+		ft_strrchr.o \
+		ft_strtrim.o \
+		ft_substr.o \
+		ft_tolower.o \
+		ft_toupper.o \
 
-INCLUDE	= libft.h
-SRCS	= ft_isascii.c ft_isprint.c ft_isalpha.c ft_isdigit.c ft_isalnum.c \
-			ft_tolower.c ft_toupper.c ft_strlen.c ft_strlcpy.c ft_strlcat.c \
-			ft_strchr.c ft_strrchr.c ft_strnstr.c ft_strncmp.c ft_atoi.c \
-			ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
-			ft_memchr.c ft_memcmp.c ft_strdup.c ft_calloc.c ft_itoa.c \
-			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-			ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_strmapi.c
-OBJS	= $(SRCS:.c=.o)
+HFILE = libft.h
 
-all:		$(NAME)
+NAME =libft.a
 
-$(NAME):	$(OBJS) $(INCLUDE)
-			$(LIB1) $(NAME) $(OBJS)
+Wflags = -Wall -Wextra -Werror
+
+LIB1 = ar -rcs
+LIB2 = ranlib
+
+RM = rm -f
+
+all: $(NAME)
+
+$(NAME):	$(OFILES) $(HFILE)
+			$(LIB1) $(NAME) $(OFILES)
 			$(LIB2) $(NAME)
 
-bonus:		$(NAME) $(BONUS_O)
-			$(LIB1) $(NAME) $(BONUS_O)
-			$(LIB2) $(NAME)
+$(OFILES): $(SRCS)
+	$(CC) -c $(Wflags) *.c
 
-.c.o:
-			$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $(<:.c=.o)
 
 clean:
-			$(RM) $(OBJS) $(BONUS_O)
+		$(RM) $(OFILES)
 
-fclean:		clean
-			$(RM) $(NAME)
+fclean: clean
+	$(RM)	$(NAME)
 
-re:			fclean all
+re: fclean $(NAME)
 
-rebonus:	fclean bonus
-
-.PHONY:		all clean fclean re bonus rebonus
+.PHONY: all clean fclean re
