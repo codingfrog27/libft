@@ -7,13 +7,18 @@ void	*ft_memmove(void	*dst, const void	*src, size_t	len)
 	i = 0;
 	if (!dst && !src)
 		return (NULL);
-	if ((size_t)dst - (size_t)src >= len)
+	if ((size_t)dst - (size_t)src < len)
 	{
-		ft_memcpy(dst, src, len);
+		i = (len - 1);
+		while (i < len)
+		{
+			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+			i--;
+		}
 	}
 	else
 	{
-		return 0;
+		ft_memcpy(dst, src, len);
 	}
 	return (dst);
 }
