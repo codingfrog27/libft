@@ -6,23 +6,11 @@ size_t	ft_strlcpy(char	*dst, const char	*src, size_t	maxlen)
 
 	srclen = ft_strlen(src);
 	if (srclen + 1 < maxlen)
-	{
-		while (srclen > 0)
-		{
-			dst[srclen] = src[srclen];
-			srclen--;
-		}
-	}
+		ft_memcpy(dst, src, srclen + 1);
 	else if (maxlen != 0)
 	{
-		maxlen--;
-		dst[maxlen] = '\0';
-		maxlen--;
-		while (maxlen > 0)
-		{
-			dst[maxlen] = src[maxlen];
-			maxlen--;
-		}
+		ft_memcpy(dst, src, maxlen - 1);
+		dst[maxlen - 1] = '\0';
 	}
-	return (ft_strlen(src));
+	return (srclen);
 }
