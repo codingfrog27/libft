@@ -14,22 +14,23 @@ int	ft_atoi(const char	*str)
 {
 	int		i;
 	long	result;
+	long	isneg;
 
 	i = 0;
 	result = 0;
-	while (search_string("\t\n\v\f\r ", str[i]))
+	isneg = 1;
+	while (search_string("\t\n\v\f\r ", str[i] && str[i]))
 		i++;
-	if (str[i] == '-')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		result *= -1;
+		if (str[i] == '-')
+			isneg = -1;
 		i++;
 	}
-	else if (str[i] == '+')
-		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + str[i] - '0';
 		i++;
 	}
-	return ((int)result);
+	return ((int)result * isneg);
 }
