@@ -19,7 +19,9 @@ int	ft_atoi(const char	*str)
 	i = 0;
 	result = 0;
 	isneg = 1;
-	while (search_string("\t\n\v\f\r ", str[i] && str[i]))
+	if (!str)
+		return (0);
+	while (search_string("\t\n\v\f\r ", str[i]) && str[i])
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{

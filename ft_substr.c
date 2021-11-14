@@ -12,7 +12,7 @@ char	*ft_substr(char const	*s, unsigned int	start, size_t	len)
 	if ((size_t)start >= slen)
 		return (strdup(""));
 	i = 0;
-	substr = (char *)malloc(slen - (start + 1) + 1);
+	substr = (char *)malloc(sizeof(char) * (slen - (start + 1) + 1));
 	if (!substr)
 		return (NULL);
 	while (len > 0 && s[start])
