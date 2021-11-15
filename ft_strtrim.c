@@ -2,7 +2,6 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*s2;
 	size_t	start;
 	size_t	end;
 	size_t	i;
@@ -14,14 +13,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = 0;
 	while (ft_strchr(set, s1[start]))
 		start++;
-	while (ft_strchr(set, s1[end - 1]))
+	while (ft_strchr(set, s1[end]))
 		end--;
-	s2 = malloc((end - start) * sizeof (char));
-	while (s2[i])
-	{
-		s2[i] = s1[start];
-		i++;
-		start++;
-	}
-	return (s2);
+	return (ft_substr(s1, start, end - start + 1));
 }

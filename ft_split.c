@@ -1,11 +1,11 @@
 #include "libft.h"
 #include "printf.h"
 
-static int	wordlen(char *s, char c)
+static int	wordlen(const char *s, char c)
 {
 	int	i;
 
-	i - 0;
+	i = 0;
 	while (s[i] && s[i] != c)
 	{
 		i++;
@@ -42,34 +42,41 @@ static int	wordcount(char *s, char c)
 		}
 
 */
+/* More variables... on line 53*/
+		/* Free ur array line 54*/
+
+// void	something(char *s,	char c)
+// {
+// 	char	*newstring;
+// 	int		wordsize;
+// 	int		j;
+
+// 	j = 0;
+// 	wordsize = wordlen(s, c);
+// 	newstring = malloc(sizeof(char) * coollen(s, c));
+// 	while (j <= wordsize)
+// 	{
+// 		newstring[j] == s[j];
+// 		j++;
+// 	}
+//}
+double array **
+
+len = wordlen()
+array[i] = memcpy()
+
 
 char	**ft_split(char const	*s, char	c)
 {
 	char	**out;
+	size_t	words;
 
-	out = (char **)malloc(wordcount(s, c) * sizeof(char *) + 1);
+	words = wordcount(s, c);
+	out = malloc((words + 1) * sizeof(char *));
 	if (!out)
 		return (NULL);
 	if (ft_allocate(out))
 	{	
 	}
 	return (out);
-}
-/* More variables... on line 53*/
-		/* Free ur array line 54*/
-
-void	something(char *s,	char c)
-{
-	char	*newstring;
-	int		wordsize;
-	int		j;
-
-	j = 0;
-	wordsize = wordlen(s, c);
-	newstring = malloc(sizeof(char) * coollen(s, c));
-	while (j <= wordsize)
-	{
-		newstring[j] == s[j];
-		j++;
-	}
 }
