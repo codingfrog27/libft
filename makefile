@@ -1,5 +1,5 @@
 
-SOURCES = ft_atoi.c \
+SRCS = ft_atoi.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_isalnum.c \
@@ -27,56 +27,24 @@ SOURCES = ft_atoi.c \
 		ft_tolower.c \
 		ft_toupper.c \
 
-OFILES = ft_atoi.o \
-		ft_bzero.o \
-		ft_calloc.o \
-		ft_isalnum.o \
-		ft_isalpha.o \
-		ft_isascii.o \
-		ft_isdigit.o \
-		ft_isprint.o \
-		ft_memchr.o \
-		ft_memcmp.o \
-		ft_memcpy.o \
-		ft_memmove.o \
-		ft_memset.o \
-		ft_strchr.o \
-		ft_strdup.o \
-		ft_strjoin.o \
-		ft_strlcat.o \
-		ft_strlcpy.o \
-		ft_strlen.o \
-		ft_strncmp.o \
-		ft_strnstr.o \
-		ft_strrchr.o \
-		ft_strtrim.o \
-		ft_substr.o \
-		ft_tolower.o \
-		ft_toupper.o \
+OFILES = $(SRCS:.c=.o)
 
 HFILE = libft.h
 
-NAME =libft.a
+NAME = libft.a
 
 Wflags = -Wall -Wextra -Werror
 
-LIB1 = ar -rcs
-LIB2 = ranlib
-
-RM = rm -f
-
 all: $(NAME)
 
-$(NAME):	$(OFILES) $(HFILE)
-			$(LIB1) $(NAME) $(OFILES)
-			$(LIB2) $(NAME)
+$(NAME): $(HFILE) | $(OFILES) 
+	ar -rcs $@ $|
 
 $(OFILES): $(SRCS)
-	$(CC) -c $(Wflags) *.c
-
+	$(CC) -c $(Wflags) $^
 
 clean:
-		$(RM) $(OFILES)
+	$(RM) $(OFILES)
 
 fclean: clean
 	$(RM)	$(NAME)
