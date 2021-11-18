@@ -31,9 +31,9 @@ static int	wordcount(char *s, char c)
 	return (words);
 }
 
-char **array;
-len = wordlen()
-array[i] = memcpy()
+// char **array;
+// len = wordlen()
+// array[i] = memcpy()
 
 
 char	**ft_split(char const	*s, char	c)

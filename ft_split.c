@@ -7,7 +7,6 @@ static size_t	count_words(char const *s, char c)
 
 	i = 0;
 	wordcount = 0;
-	//handle c = '\0' edgecase
 	while (s[i] != '\0')
 	{
 		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
@@ -29,40 +28,26 @@ static size_t	wordlen(char const *s, char c)
 	return (len);
 }
 
-static void	freetime(char **s, size_t current)
+static void	freetime(char **out, size_t current)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < current)
 	{
-		free(s[i]);
+		free(out[i]);
 		i++;
 	}
-	free(s);
+	free(out);
 }
 
-char	**splittime(char const **s, char c)
+char	**splittime(char const *s, char **out, char c, size_t wordcount)
 {
-	
-}
-char	**ft_split(char const *s, char c)
-{
-	char	**out;
-	size_t	wordcount;
 	size_t	current;
 	size_t	i;
 	size_t	wlen;
-//fix weird segfault
+
 	i = 0;
-	if (s == NULL || s[i] == '\0')
-		return (NULL);
-	else if (c == '\0')
-		return ((void *)0);
-	wordcount = count_words(s, c);
-	out = malloc((wordcount + 1) * sizeof(char *));
-	if (out == NULL)
-		return (NULL);
 	while (s[i] == c && s[i] != '\0')
 		i++;
 	current = 0;
@@ -72,7 +57,7 @@ char	**ft_split(char const *s, char c)
 		out[current] = ft_substr(s, i, wlen);
 		if (out[current] == NULL)
 		{
-			freetime(s, current);
+			freetime(out, current);
 			return (NULL);
 		}
 		i += wlen;
@@ -81,5 +66,18 @@ char	**ft_split(char const *s, char c)
 		current++;
 	}
 	out[current] = NULL;
+	return (out);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**out;
+	size_t	wordcount;
+
+	wordcount = count_words(s, c);
+	out = malloc((wordcount + 1) * sizeof(char *));
+	if (out == NULL)
+		return (NULL);
+	splittime(s, out, c, wordcount);
 	return (out);
 }

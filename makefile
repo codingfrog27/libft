@@ -26,6 +26,7 @@ SRCS = ft_atoi.c \
 		ft_substr.c \
 		ft_tolower.c \
 		ft_toupper.c \
+		ft_itoa.c \
 
 OFILES = $(SRCS:.c=.o)
 
