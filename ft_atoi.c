@@ -12,15 +12,13 @@ static int	search_string(char *set, char c)
 
 int	ft_atoi(const char	*str)
 {
-	int		i;
+	size_t	i;
 	long	result;
 	long	isneg;
 
 	i = 0;
 	result = 0;
 	isneg = 1;
-	if (!str)
-		return (0);
 	while (search_string("\t\n\v\f\r ", str[i]) && str[i])
 		i++;
 	if (str[i] == '-' || str[i] == '+')
@@ -33,6 +31,7 @@ int	ft_atoi(const char	*str)
 	{
 		result = result * 10 + str[i] - '0';
 		i++;
+
 	}
-	return ((int)result * isneg);
+	return (result * isneg);
 }

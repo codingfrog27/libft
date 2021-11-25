@@ -5,9 +5,12 @@ static int	checklen(int n)
 	int		len;
 
 	len = 0;
-	// if (n <= 0)
-	// 	len++;
-	while (n)
+	if (n < 0)
+	{
+		len++;
+		n *= -1;
+	}
+	while (n > 0)
 	{
 		n /= 10;
 		len++;
@@ -20,25 +23,24 @@ char	*ft_itoa(int n)
 	char	*s;
 	size_t	len;
 
+	if (n == 0)
+		return (ft_strdup("0"));
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
 	len = checklen(n);
-	s = malloc(sizeof(char) * (len + 1));
+	s = ft_calloc(len + 1, sizeof(char));
 	if (!s)
-	{
-		free(s);
 		return (NULL);
-	}
 	if (n < 0)
 	{
 		s[0] = '-';
-		len++;
 		n *= -1;
 	}
-	s[len + 1] = '\0';
-	while (s[len])
+	while (n > 0)
 	{
-		s[len] = n % 10 + '0';
 		len--;
-		n /= n / 10;
+		s[len] = (n % 10) + '0';
+		n /= 10;
 	}
 	return (s);
 }
