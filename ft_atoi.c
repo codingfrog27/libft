@@ -31,7 +31,6 @@ int	ft_atoi(const char	*str)
 	{
 		result = result * 10 + str[i] - '0';
 		i++;
-
 	}
 	return (result * isneg);
 }

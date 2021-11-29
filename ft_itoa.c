@@ -26,8 +26,6 @@ char	*ft_itoa(int n)
 
 	if (n == 0)
 		return (ft_strdup("0"));
-	// if (n == -2147483648)
-	// 	return (ft_strdup("-2147483648"));
 	n2 = (long)n;
 	len = checklen(n2);
 	s = ft_calloc(len + 1, sizeof(char));
