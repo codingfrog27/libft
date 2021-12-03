@@ -71,12 +71,14 @@ char	**splittime(char const *s, char **out, char c, size_t wordcount)
 
 char	**ft_split(char const *s, char c)
 {
+	if (!s)
+		return (NULL);
 	char	**out;
 	size_t	wordcount;
 
 	wordcount = count_words(s, c);
 	out = malloc((wordcount + 1) * sizeof(char *));
-	if (out == NULL)
+	if (!out)
 		return (NULL);
 	splittime(s, out, c, wordcount);
 	return (out);

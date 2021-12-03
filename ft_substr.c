@@ -3,22 +3,17 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
-	size_t	i;
 	size_t	slen;
-
-	slen = ft_strlen(s);
-	if ((size_t)start >= slen)
-		return (ft_strdup(""));
-	i = 0;
-	substr = (char *)malloc(sizeof(*s) * (len + 1));
-	if (substr == NULL)
+	if (!s)
 		return (NULL);
-	while (i < len && s[start] != '\0')
-	{
-		substr[i] = s[start];
-		i++;
-		start++;
-	}
-	substr[i] = '\0';
+	slen = ft_strlen(s);
+	if ((size_t)start >= slen || !len)
+		return (ft_strdup(""));
+	if (len > slen)
+		len = slen;
+	substr = ft_calloc(len + 1, sizeof(char));
+	if (!substr)
+		return (NULL);
+	ft_memcpy(substr, s + start, len);
 	return (substr);
 }
