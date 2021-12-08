@@ -7,7 +7,7 @@ static size_t	count_words(char const *s, char c)
 
 	i = 0;
 	wordcount = 0;
-	while (s[i] != '\0')
+	while (s[i])
 	{
 		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
 			wordcount++;
@@ -21,7 +21,7 @@ static size_t	wordlen(char const *s, char c)
 	size_t	len;
 
 	len = 0;
-	while (s[len] != c && s[len] != '\0')
+	while (s[len] != c && s[len])
 	{
 		len++;
 	}
@@ -48,7 +48,7 @@ char	**splittime(char const *s, char **out, char c, size_t wordcount)
 	size_t	wlen;
 
 	i = 0;
-	while (s[i] == c && s[i] != '\0')
+	while (s[i] == c && s[i])
 		i++;
 	current = 0;
 	while (current < wordcount)
@@ -61,7 +61,7 @@ char	**splittime(char const *s, char **out, char c, size_t wordcount)
 			return (NULL);
 		}
 		i += wlen;
-		while (s[i] == c && s[i] != '\0')
+		while (s[i] == c && s[i])
 			i++;
 		current++;
 	}
