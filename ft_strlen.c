@@ -6,9 +6,11 @@
 /*   By: mde-cloe <mde-cloe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 18:00:40 by mde-cloe          #+#    #+#             */
-/*   Updated: 2021/12/13 18:11:06 by mde-cloe         ###   ########.fr       */
+/*   Updated: 2021/12/13 21:48:26 by mde-cloe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 size_t	ft_strlen(const char *str)
 {
