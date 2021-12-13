@@ -1,3 +1,14 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mde-cloe <mde-cloe@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/12/13 18:00:17 by mde-cloe          #+#    #+#              #
+#    Updated: 2021/12/13 18:00:19 by mde-cloe         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 SRCS = ft_atoi.c \
 		ft_bzero.c \
@@ -37,6 +48,17 @@ SRCS = ft_atoi.c \
 
 OFILES = $(SRCS:.c=.o)
 
+BONUS_SRCS = ft_lstnew.c \
+			ft_lstadd_front.c \
+			ft_lstsize.c \
+			ft_lstlast.c \
+			ft_lstadd_back.c \
+			ft_lstdelone.c \
+			ft_lstclear.c \
+			ft_lstiter.c \
+
+BONUS_OFILES = $(BONUS_SRCS: .c=.o)
+
 HFILE = libft.h
 
 NAME = libft.a
@@ -45,12 +67,18 @@ Wflags = -Wall -Wextra -Werror
 
 all: $(NAME)
 
+
+ifdef BONUSTIME
+$(OFILES) += $(BONUS_OFILES)
+endif
+
 $(NAME): $(HFILE) | $(OFILES) 
 	ar -rcs $@ $|
 
 $(OFILES): $(SRCS)
 	$(CC) -c $(Wflags) $^
-
+bonus:
+	make BONUSTIME=1
 clean:
 	$(RM) $(OFILES)
 

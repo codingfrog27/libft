@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mde-cloe <mde-cloe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 18:00:40 by mde-cloe          #+#    #+#             */
+/*   Updated: 2021/12/13 18:20:28 by mde-cloe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static size_t	count_words(char const *s, char c)
@@ -71,11 +83,11 @@ char	**splittime(char const *s, char **out, char c, size_t wordcount)
 
 char	**ft_split(char const *s, char c)
 {
-	if (!s)
-		return (NULL);
 	char	**out;
 	size_t	wordcount;
 
+	if (!s)
+		return (NULL);
 	wordcount = count_words(s, c);
 	out = malloc((wordcount + 1) * sizeof(char *));
 	if (!out)
