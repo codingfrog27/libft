@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-cloe <mde-cloe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 17:43:43 by mde-cloe          #+#    #+#             */
-/*   Updated: 2021/12/13 18:19:34 by mde-cloe         ###   ########.fr       */
+/*   Created: 2021/12/14 22:22:32 by mde-cloe          #+#    #+#             */
+/*   Updated: 2021/12/14 22:25:20 by mde-cloe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while (lst->content != '\0')
-	{
+	while (lst)
 		lst = lst->next;
-	}
 	return (lst);
 }

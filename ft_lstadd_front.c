@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-cloe <mde-cloe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 17:43:59 by mde-cloe          #+#    #+#             */
-/*   Updated: 2021/12/13 17:44:00 by mde-cloe         ###   ########.fr       */
+/*   Created: 2021/12/14 22:10:05 by mde-cloe          #+#    #+#             */
+/*   Updated: 2021/12/14 22:18:09 by mde-cloe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void ft_lstadd_front(t_list **lst, t_list *new)
 {
 	new->next = *lst;
 	*lst = new;

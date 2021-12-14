@@ -6,7 +6,7 @@
 #    By: mde-cloe <mde-cloe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/13 18:00:17 by mde-cloe          #+#    #+#              #
-#    Updated: 2021/12/14 16:42:23 by mde-cloe         ###   ########.fr        #
+#    Updated: 2021/12/14 22:04:30 by mde-cloe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,12 +52,12 @@ BONUS_SRCS = ft_lstnew.c \
 			 ft_lstsize.c \
 			 ft_lstlast.c \
 			 ft_lstadd_back.c \
-			# ft_lstdelone.c \
-			# ft_lstclear.c \
-			# ft_lstiter.c \
-			# ft_lstmap.c \
+			 ft_lstdelone.c \
+			 ft_lstclear.c \
+			 ft_lstiter.c \
+			 ft_lstmap.c \
 
-BONUS_OFILES = $(BONUS_SRCS: .c=.o)
+BONUS_OFILES = $(BONUS_SRCS:.c=.o)
 
 HFILE = libft.h
 
@@ -70,17 +70,14 @@ all: $(NAME)
 $(NAME): $(HFILE) | $(OFILES) 
 	ar -rcs $@ $|
 
-$(OFILES): $(SRCS)
+bonus: $(OFILES) $(BONUS_OFILES)
+	ar -rcs $(NAME) $^
+
+%.o: %.c
 	$(CC) -c $(Wflags) $^
 
-$(BONUS_OFILES): $(BONUS_SRCS)
-	$(CC) -c $(Wflags) $^
-
-bonus: $(NAME) $(BONUS_OFILES)
-	ar -rcs $@ $^
-	
 clean:
-	$(RM) $(OFILES)
+	$(RM) $(OFILES) $(BONUS_OFILES)
 
 fclean: clean
 	$(RM)	$(NAME)

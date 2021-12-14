@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-cloe <mde-cloe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 17:43:07 by mde-cloe          #+#    #+#             */
-/*   Updated: 2021/12/14 16:43:19 by mde-cloe         ###   ########.fr       */
+/*   Created: 2021/12/14 22:25:33 by mde-cloe          #+#    #+#             */
+/*   Updated: 2021/12/14 22:30:31 by mde-cloe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	hoi;
+	t_list	tmp;
 
-	hoi = *ft_lstlast(*lst);
-	hoi.next = calloc(1, sizeof(t_list));
-	hoi.next = new;
+	tmp = ft_lstlast(*lst);
+	tmp->next = new;
 }
