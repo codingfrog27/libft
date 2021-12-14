@@ -6,7 +6,7 @@
 #    By: mde-cloe <mde-cloe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/13 18:00:17 by mde-cloe          #+#    #+#              #
-#    Updated: 2021/12/14 16:42:23 by mde-cloe         ###   ########.fr        #
+#    Updated: 2021/12/14 16:05:21 by mde-cloe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,18 +44,19 @@ SRCS = ft_atoi.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
+		ft_lstnew.c \
 
 OFILES = $(SRCS:.c=.o)
 
 BONUS_SRCS = ft_lstnew.c \
-			 ft_lstadd_front.c \
-			 ft_lstsize.c \
-			 ft_lstlast.c \
-			 ft_lstadd_back.c \
-			# ft_lstdelone.c \
-			# ft_lstclear.c \
-			# ft_lstiter.c \
-			# ft_lstmap.c \
+			ft_lstadd_front.c \
+			ft_lstsize.c \
+			ft_lstlast.c \
+			ft_lstadd_back.c \
+			ft_lstdelone.c \
+			ft_lstclear.c \
+			ft_lstiter.c \
+			ft_lstmap.c \
 
 BONUS_OFILES = $(BONUS_SRCS: .c=.o)
 
@@ -67,18 +68,18 @@ Wflags = -Wall -Wextra -Werror
 
 all: $(NAME)
 
+
+ifdef BONUSTIME
+$(OFILES) += $(BONUS_OFILES)
+endif
+
 $(NAME): $(HFILE) | $(OFILES) 
 	ar -rcs $@ $|
 
 $(OFILES): $(SRCS)
 	$(CC) -c $(Wflags) $^
-
-$(BONUS_OFILES): $(BONUS_SRCS)
-	$(CC) -c $(Wflags) $^
-
-bonus: $(NAME) $(BONUS_OFILES)
-	ar -rcs $@ $^
-	
+bonus:
+	make BONUSTIME=1
 clean:
 	$(RM) $(OFILES)
 
@@ -87,4 +88,4 @@ fclean: clean
 
 re: fclean $(NAME)
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
