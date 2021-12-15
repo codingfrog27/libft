@@ -6,7 +6,7 @@
 /*   By: mde-cloe <mde-cloe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 22:34:17 by mde-cloe          #+#    #+#             */
-/*   Updated: 2021/12/15 13:47:53 by mde-cloe         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:20:56 by mde-cloe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 
 	while (*lst)
 	{
-		tmp = *lst->next;
-		del(*lst->content);
+		tmp = (*lst)->next;
+		del((*lst)->content);
 		free(*lst);
 		*lst = tmp;
 	}
