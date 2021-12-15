@@ -6,7 +6,7 @@
 /*   By: mde-cloe <mde-cloe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:48:43 by mde-cloe          #+#    #+#             */
-/*   Updated: 2021/12/15 13:48:58 by mde-cloe         ###   ########.fr       */
+/*   Updated: 2021/12/15 13:55:55 by mde-cloe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,9 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }
