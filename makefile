@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mde-cloe <mde-cloe@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/12/13 18:00:17 by mde-cloe          #+#    #+#              #
-#    Updated: 2021/12/15 13:43:30 by mde-cloe         ###   ########.fr        #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: mde-cloe <mde-cloe@student.42.fr>            +#+                      #
+#                                                    +#+                       #
+#    Created: 2021/12/13 18:00:17 by mde-cloe      #+#    #+#                  #
+#    Updated: 2021/12/15 16:11:16 by mde-cloe      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,15 +47,15 @@ SRCS = ft_atoi.c \
 
 OFILES = $(SRCS:.c=.o)
 
-BONUS_SRCS = ft_lstnew.c \
-			 ft_lstadd_front.c \
-			 ft_lstsize.c \
-			 ft_lstlast.c \
-			 ft_lstadd_back.c \
-			 ft_lstdelone.c \
-			 ft_lstclear.c \
-			 ft_lstiter.c \
-			 ft_lstmap.c \
+BONUS_SRCS = ft_lstnew_bonus.c \
+			 ft_lstadd_front_bonus.c \
+			 ft_lstsize_bonus.c \
+			 ft_lstlast_bonus.c \
+			 ft_lstadd_back_bonus.c \
+			 ft_lstdelone_bonus.c \
+			 ft_lstclear_bonus.c \
+			 ft_lstiter_bonus.c \
+			#  ft_lstmap_bonus.c \
 
 BONUS_OFILES = $(BONUS_SRCS:.c=.o)
 
@@ -71,7 +71,7 @@ $(NAME): $(HFILE) | $(OFILES)
 	ar -rcs $@ $|
 
 bonus: $(OFILES) $(BONUS_OFILES)
-	ar -rcs $(NAME) $^
+	ar -rcs libft.a $?
 
 %.o: %.c
 	$(CC) -c $(Wflags) $^
