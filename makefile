@@ -6,7 +6,7 @@
 #    By: mde-cloe <mde-cloe@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/12/13 18:00:17 by mde-cloe      #+#    #+#                  #
-#    Updated: 2021/12/15 16:33:05 by mde-cloe      ########   odam.nl          #
+#    Updated: 2021/12/15 18:41:43 by mde-cloe      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ BONUS_SRCS := ft_lstnew_bonus.c \
 			ft_lstdelone_bonus.c \
 			ft_lstclear_bonus.c \
 			ft_lstiter_bonus.c \
-			#ft_lstmap_bonus.c \
+			ft_lstmap_bonus.c \
 
 BONUS_OFILES := $(BONUS_SRCS:.c=.o)
 
