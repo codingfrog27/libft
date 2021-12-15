@@ -2,3 +2,4 @@
 .gitattributes
 *.o
 *.a
+libftTester/
