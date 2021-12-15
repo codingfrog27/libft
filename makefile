@@ -6,11 +6,11 @@
 #    By: mde-cloe <mde-cloe@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/12/13 18:00:17 by mde-cloe      #+#    #+#                  #
-#    Updated: 2021/12/15 16:11:16 by mde-cloe      ########   odam.nl          #
+#    Updated: 2021/12/15 16:33:05 by mde-cloe      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_atoi.c \
+SRCS := ft_atoi.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_isalnum.c \
@@ -45,37 +45,40 @@ SRCS = ft_atoi.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
 
-OFILES = $(SRCS:.c=.o)
+OFILES := $(SRCS:.c=.o)
 
-BONUS_SRCS = ft_lstnew_bonus.c \
-			 ft_lstadd_front_bonus.c \
-			 ft_lstsize_bonus.c \
-			 ft_lstlast_bonus.c \
-			 ft_lstadd_back_bonus.c \
-			 ft_lstdelone_bonus.c \
-			 ft_lstclear_bonus.c \
-			 ft_lstiter_bonus.c \
-			#  ft_lstmap_bonus.c \
+BONUS_SRCS := ft_lstnew_bonus.c \
+			ft_lstadd_front_bonus.c \
+			ft_lstsize_bonus.c \
+			ft_lstlast_bonus.c \
+			ft_lstadd_back_bonus.c \
+			ft_lstdelone_bonus.c \
+			ft_lstclear_bonus.c \
+			ft_lstiter_bonus.c \
+			#ft_lstmap_bonus.c \
 
-BONUS_OFILES = $(BONUS_SRCS:.c=.o)
+BONUS_OFILES := $(BONUS_SRCS:.c=.o)
 
-HFILE = libft.h
+HFILE := libft.h
 
-NAME = libft.a
+NAME := libft.a
 
-Wflags = -Wall -Wextra -Werror
+CFLAGS ?= -Wall -Wextra -Werror
 
+ifdef BONUSTIME
+	OFILES := $(OFILES) $(BONUS_OFILES)
+endif
 all: $(NAME)
+
+
 
 $(NAME): $(HFILE) | $(OFILES) 
 	ar -rcs $@ $|
 
-bonus: $(OFILES) $(BONUS_OFILES)
-	ar -rcs libft.a $?
-
-%.o: %.c
-	$(CC) -c $(Wflags) $^
-
+$(COMP_OFILES): $(SRCS) $(BONUS_SRCS)
+	$(CC) -c $(CFLAGS) $^
+bonus:
+	make BONUSTIME=1
 clean:
 	$(RM) $(OFILES) $(BONUS_OFILES)
 
