@@ -6,7 +6,7 @@
 #    By: mde-cloe <mde-cloe@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/12/13 18:00:17 by mde-cloe      #+#    #+#                  #
-#    Updated: 2021/12/16 17:44:34 by mde-cloe      ########   odam.nl          #
+#    Updated: 2021/12/16 17:47:19 by mde-cloe      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,8 +75,8 @@ all: $(NAME)
 $(NAME): $(OFILES) | $(HFILE)
 	ar -rcs $@ $?
 
-$(OFILES): $(SRCS) $(BONUS_SRCS)
-	$(CC) -c $(CFLAGS) $?
+$(OFILES): %.o: %.c
+	$(CC) -c $(CFLAGS) $^
 bonus:
 	make BONUSTIME=1
 clean:
@@ -84,6 +84,8 @@ clean:
 
 fclean: clean
 	$(RM)	$(NAME)
+
+
 
 re: fclean $(NAME)
 
