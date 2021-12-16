@@ -6,7 +6,7 @@
 #    By: mde-cloe <mde-cloe@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/12/13 18:00:17 by mde-cloe      #+#    #+#                  #
-#    Updated: 2021/12/15 18:41:43 by mde-cloe      ########   odam.nl          #
+#    Updated: 2021/12/16 17:44:34 by mde-cloe      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ HFILE := libft.h
 
 NAME := libft.a
 
-CFLAGS ?= -Wall -Wextra -Werror
+CFLAGS ?= -Wall -Wextra -Werror -g
 
 ifdef BONUSTIME
 	OFILES := $(OFILES) $(BONUS_OFILES)
@@ -72,11 +72,11 @@ all: $(NAME)
 
 
 
-$(NAME): $(HFILE) | $(OFILES) 
-	ar -rcs $@ $|
+$(NAME): $(OFILES) | $(HFILE)
+	ar -rcs $@ $?
 
-$(COMP_OFILES): $(SRCS) $(BONUS_SRCS)
-	$(CC) -c $(CFLAGS) $^
+$(OFILES): $(SRCS) $(BONUS_SRCS)
+	$(CC) -c $(CFLAGS) $?
 bonus:
 	make BONUSTIME=1
 clean:
