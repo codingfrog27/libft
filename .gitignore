@@ -3,3 +3,11 @@
 *.o
 *.a
 libftTester/
+a.out.dSYM/Contents/Resources/DWARF/a.out
+a.out.dSYM/Contents/Info.plist
+a.out
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/libft.iml
+.DS_Store
