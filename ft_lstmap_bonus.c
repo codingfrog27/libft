@@ -3,27 +3,35 @@
 /*                                                        ::::::::            */
 /*   ft_lstmap_bonus.c                                  :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mde-cloe <mde-cloe@student.42.fr>            +#+                     */
+/*   By: mde-cloe <mde-cloe@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/12/15 13:59:12 by mde-cloe      #+#    #+#                 */
-/*   Updated: 2021/12/16 17:51:20 by mde-cloe      ########   odam.nl         */
+/*   Created: 2022/01/17 17:43:33 by mde-cloe      #+#    #+#                 */
+/*   Updated: 2022/01/19 16:01:09 by mde-cloe      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),
+void (*del)(void *))
 {
-	t_list	*ret;
-	t_list	*new;
+	t_list	*head;
+	t_list	*body;
 
+	if (!lst || !f)
+		return (NULL);
+	head = ft_lstnew(f(lst->content));
+	lst = lst->next;
 	while (lst)
 	{
-		new = ft_lstnew(f(lst->content));
-		ft_lstadd_back(&ret, new);
-		if (!ret)
-			ft_lstclear(&ret, del);
+		body = ft_lstnew(f(lst->content));
+		if (!body)
+		{
+			ft_lstclear(&head, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&head, body);
 		lst = lst->next;
 	}
-	return (ret);
+	return (head);
 }
