@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_lstmap_bonus.c                                  :+:    :+:            */
+/*   ft_strrev.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mde-cloe <mde-cloe@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/01/17 17:43:33 by mde-cloe      #+#    #+#                 */
-/*   Updated: 2022/01/19 16:01:09 by mde-cloe      ########   odam.nl         */
+/*   Created: 2022/05/26 19:31:20 by mde-cloe      #+#    #+#                 */
+/*   Updated: 2022/06/09 18:56:48 by mde-cloe      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),
-void (*del)(void *))
+void	str_reverse(char *str)
 {
-	t_list	*head;
-	t_list	*body;
+	size_t	i;
+	size_t	len;
+	char	temp;
 
-	if (!lst || !f)
-		return (NULL);
-	head = ft_lstnew(f(lst->content));
-	lst = lst->next;
-	while (lst)
+	i = 0;
+	len = ft_strlen(str) - 1;
+	while (i < len)
 	{
-		body = ft_lstnew(f(lst->content));
-		if (!body)
-		{
-			ft_lstclear(&head, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&head, body);
-		lst = lst->next;
+		temp = str[len];
+		str[len] = str[i];
+		str[i] = temp;
+		i++;
+		len--;
 	}
-	return (head);
 }
